@@ -7,20 +7,6 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 
 # --------------------
-# Download model if not present
-# --------------------
-model_path = 'pcos_cnn_model.h5'
-gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # Replace with your actual file ID
-
-import streamlit as st
-import numpy as np
-import os
-import gdown
-from PIL import Image
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-
-# --------------------
 # Page Config
 # --------------------
 st.set_page_config(
@@ -30,7 +16,7 @@ st.set_page_config(
 )
 
 # --------------------
-# Hide footer and menu
+# Hide Streamlit Style
 # --------------------
 st.markdown("""
     <style>
@@ -40,7 +26,7 @@ st.markdown("""
             background-color: #f9f2ec;
         }
     </style>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # --------------------
 # Title and Subtitle
@@ -56,20 +42,20 @@ st.sidebar.title("Upload Image")
 uploaded_file = st.sidebar.file_uploader("Accepted formats: JPG, PNG", type=["jpg", "jpeg", "png"])
 
 # --------------------
-# Download model if not present
+# Download Model If Needed
 # --------------------
 model_path = 'pcos_cnn_model.h5'
-gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # 🔁 Replace with your actual Google Drive file ID
+gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # ✅ Replace if you change file
 
 os.makedirs('model', exist_ok=True)
 
 if not os.path.exists(model_path):
     with st.spinner("Downloading model..."):
-        url = f'https://drive.google.com/uc?id=1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'
+        url = f'https://drive.google.com/uc?id={gdrive_file_id}'
         gdown.download(url, model_path, quiet=True)
 
 # --------------------
-# Load model
+# Load Model
 # --------------------
 model = load_model(model_path)
 
@@ -97,5 +83,17 @@ if uploaded_file is not None:
     
     st.caption(f"Confidence Score: {prob:.2f}")
 else:
-    st.info("Please upload an image to begin.")
-
+    # 💡 Custom styled info box
+    st.markdown("""
+    <div style='
+        background-color: #e0f7fa;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 5px solid #00acc1;
+        font-size: 16px;
+        color: #006064;
+        margin-top: 2rem;
+    '>
+    📤 <strong>Please upload an image to begin.</strong>
+    </div>
+    """, unsafe_allow_html=True)
