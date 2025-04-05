@@ -44,14 +44,14 @@ uploaded_file = st.sidebar.file_uploader("Accepted formats: JPG, PNG", type=["jp
 # --------------------
 # Download model from Google Drive if not present
 # --------------------
-model_path = 'pcos_cnn_model.h5'
-gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # Replace with your actual ID
+model_path = 'pcos_mobilenet_model.h5'
+gdrive_file_id = '1-0FilG8SexDWNvgxdg5cUsLuJGIiMcf3'  # Replace with your actual ID
 
 os.makedirs('model', exist_ok=True)
 
 if not os.path.exists(model_path):
     with st.spinner("Downloading model..."):
-        url = f'https://drive.google.com/uc?id={gdrive_file_id}'
+        url = f'https://drive.google.com/uc?id=1-0FilG8SexDWNvgxdg5cUsLuJGIiMcf3'
         gdown.download(url, model_path, quiet=True)
 
 # --------------------
