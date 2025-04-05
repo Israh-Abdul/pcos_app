@@ -9,8 +9,8 @@ from tensorflow.keras.preprocessing.image import img_to_array
 # --------------------
 # Download model if not present
 # --------------------
-model_path = 'model/pcos_cnn_model.h5'
-gdrive_file_id = 'YOUR_FILE_ID_HERE'  # Replace with your actual file ID
+model_path = 'pcos_cnn_model.h5'
+gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # Replace with your actual file ID
 
 os.makedirs('model', exist_ok=True)
 
