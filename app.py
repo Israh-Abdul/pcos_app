@@ -91,7 +91,7 @@ else:
         border-radius: 8px;
         border-left: 5px solid #00acc1;
         font-size: 16px;
-        color: #006064;
+        color: #000000;
         margin-top: 2rem;
     '>
     📤 <strong>Please upload an image to begin.</strong>
