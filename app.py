@@ -45,7 +45,7 @@ st.markdown("""
 # --------------------
 # Title and Subtitle
 # --------------------
-st.markdown("<h2 style='text-align: center; color: #2E7D32;'>PCOS Detection from Ultrasound Image</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #1c4a1e;'>PCOS Detection from Ultrasound Image</h2>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: grey;'>Upload a grayscale ovary ultrasound image to predict presence of PCOS</p>", unsafe_allow_html=True)
 st.markdown("---")
 
