@@ -37,7 +37,7 @@ st.markdown("""
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         .stApp {
-            background-color: #ecd9c6;
+            background-color: #f9f2ec;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -45,7 +45,7 @@ st.markdown("""
 # --------------------
 # Title and Subtitle
 # --------------------
-st.markdown("<h2 style='text-align: center; color: #003399;'>PCOS Detection from Ultrasound Image</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #1f3d7a;'>PCOS Detection from Ultrasound Image</h2>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: grey;'>Upload a grayscale ovary ultrasound image to predict presence of PCOS</p>", unsafe_allow_html=True)
 st.markdown("---")
 
