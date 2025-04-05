@@ -90,7 +90,6 @@ if uploaded_file is not None:
         '>
             <h4 style='color: {result_color}; margin-bottom: 0.5rem;'>Prediction Result</h4>
             <p style='color: {text_color}; font-size: 18px; font-weight: 500;'>{result_text}</p>
-            <p style='color: #555;'>Confidence Score: {prob:.2f}</p>
         </div>
     """, unsafe_allow_html=True)
 
