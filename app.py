@@ -16,7 +16,7 @@ st.set_page_config(
 )
 
 # --------------------
-# Hide Streamlit Style
+# Hide Streamlit Default Menu & Style Background
 # --------------------
 st.markdown("""
     <style>
@@ -36,16 +36,16 @@ st.markdown("<p style='text-align: center; color: grey;'>Upload a grayscale ovar
 st.markdown("---")
 
 # --------------------
-# Sidebar: Upload
+# Sidebar Upload
 # --------------------
 st.sidebar.title("Upload Image")
 uploaded_file = st.sidebar.file_uploader("Accepted formats: JPG, PNG", type=["jpg", "jpeg", "png"])
 
 # --------------------
-# Download Model If Needed
+# Download model from Google Drive if not present
 # --------------------
 model_path = 'pcos_cnn_model.h5'
-gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # ✅ Replace if you change file
+gdrive_file_id = '1HucmF4vFg_qG_tgeoEpneZB1qriIAGb7'  # Replace with your actual ID
 
 os.makedirs('model', exist_ok=True)
 
@@ -55,7 +55,7 @@ if not os.path.exists(model_path):
         gdown.download(url, model_path, quiet=True)
 
 # --------------------
-# Load Model
+# Load the model
 # --------------------
 model = load_model(model_path)
 
@@ -74,16 +74,28 @@ if uploaded_file is not None:
     prob = prediction[0][0]
 
     st.markdown("---")
-    st.subheader("Prediction Result")
 
-    if prob > 0.5:
-        st.success("🩺 PCOS Detected")
-    else:
-        st.info("✅ No PCOS Detected")
-    
-    st.caption(f"Confidence Score: {prob:.2f}")
+    # Determine result and color
+    result_text = "🩺 PCOS Detected" if prob > 0.5 else "✅ No PCOS Detected"
+    result_color = "#b30000" if prob > 0.5 else "#006400"  # Deep red or green for contrast
+    text_color = "#222"
+
+    # Custom styled result box
+    st.markdown(f"""
+        <div style='
+            padding: 1.2rem;
+            background-color: #f9f2ec;
+            border-radius: 10px;
+            border-left: 5px solid {result_color};
+        '>
+            <h4 style='color: {result_color}; margin-bottom: 0.5rem;'>Prediction Result</h4>
+            <p style='color: {text_color}; font-size: 18px; font-weight: 500;'>{result_text}</p>
+            <p style='color: #555;'>Confidence Score: {prob:.2f}</p>
+        </div>
+    """, unsafe_allow_html=True)
+
 else:
-    # 💡 Custom styled info box
+    # Custom styled upload prompt
     st.markdown("""
     <div style='
         background-color: #e0f7fa;
@@ -91,7 +103,7 @@ else:
         border-radius: 8px;
         border-left: 5px solid #00acc1;
         font-size: 16px;
-        color: #000000;
+        color: #006064;
         margin-top: 2rem;
     '>
     📤 <strong>Please upload an image to begin.</strong>
