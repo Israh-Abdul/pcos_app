@@ -87,19 +87,6 @@ if page == "Home":
             </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("---")
-        st.markdown(f"""
-            <div style='
-                padding: 1.2rem;
-                background-color: #f9f2ec;
-                border-radius: 10px;
-                border-left: 5px solid {result_color};
-            '>
-                <h4 style='color: {result_color}; margin-bottom: 0.5rem;'>Prediction Result</h4>
-                <p style='color: #222; font-size: 18px; font-weight: 500;'>{result_text}</p>
-            </div>
-        """, unsafe_allow_html=True)
-
     else:
         st.markdown("""
             <div style='
